@@ -42,7 +42,7 @@ jobs:
       run: docker save my_fastapi_app:latest > my_fastapi_app.tar
 
     - name: Upload Docker image as artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: my_fastapi_app
         path: my_fastapi_app.tar
