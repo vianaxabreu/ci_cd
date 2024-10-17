@@ -7,7 +7,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV PYTHONUNBUFFERED=1
 
 # Create a non-root user and set the working directory
-RUN apt-get update && \
+RUN apt-get -y update && \
+    && apt-get -y upgrade \
     apt-get install -y --no-install-recommends build-essential && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
