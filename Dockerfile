@@ -4,7 +4,7 @@ FROM python:3.8.14-slim
 ARG DEBIAN_FRONTEND=noninteractive
 
 # force the stdout and stderr streams to be unbuffered.
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONUNBUFFERED=1
 
 RUN apt-get -y update \
     && apt-get -y upgrade \
@@ -28,4 +28,6 @@ EXPOSE $PORT
 ENTRYPOINT [ "poetry", "run" ]
 
 # YOUR CODE HERE
-CMD ["uvicorn", "app.main:app", "--host 0.0.0.0", "--port $PORT"]
+# CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "$PORT"]
+
+CMD uvicorn app.main:app --host 0.0.0.0 --port $PORT
