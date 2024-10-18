@@ -5,8 +5,9 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # force the stdout and stderr streams to be unbuffered.
 ENV PYTHONUNBUFFERED=1
-
-RUN apt-get -y update \
+# apt-get update && apt-get install --only-upgrade bash
+#RUN apt-get -y update \
+RUN apt-get update && apt-get install --only-upgrade bash \
     && apt-get -y upgrade \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
