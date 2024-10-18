@@ -28,6 +28,6 @@ EXPOSE $PORT
 ENTRYPOINT [ "poetry", "run" ]
 
 # YOUR CODE HERE
-# CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "$PORT"]
-
-CMD uvicorn app.main:app --host 0.0.0.0 --port $PORT
+#CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "/bin/sh", "-c", "echo $PORT"]
+CMD ["/bin/sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port $PORT"]
+#CMD uvicorn app.main:app --host 0.0.0.0 --port $PORT
